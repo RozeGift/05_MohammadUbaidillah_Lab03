@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BasketMovementScript : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class BasketMovementScript : MonoBehaviour
       transform.position = transform.position + new Vector3(horizontalInput * speed * Time.deltaTime, 0, 0);
         scoreText.text = "Score: " + score;
         BasketLimitChecker();
+
+        if(score == 30)
+        {
+            SceneManager.LoadScene("WinScene");
+        }
     }
 
     void BasketLimitChecker()
