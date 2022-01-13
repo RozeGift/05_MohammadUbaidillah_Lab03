@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BasketMovementScript : MonoBehaviour
 {
     public float speed;
     public float maxXlimit = 7f;
-    
+
+    public int score;
+
+    public Text scoreText;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +23,8 @@ public class BasketMovementScript : MonoBehaviour
       float horizontalInput = Input.GetAxis("Horizontal");
 
       transform.position = transform.position + new Vector3(horizontalInput * speed * Time.deltaTime, 0, 0);
+        scoreText.text = "Score: " + score;
+        BasketLimitChecker();
     }
 
     void BasketLimitChecker()
@@ -39,12 +45,13 @@ public class BasketMovementScript : MonoBehaviour
     {
         if(collision.gameObject.tag == "Healthy")
         {
-            print("Healthy");
+            score += 10;
+            Destroy(collision.gameObject);
         }
 
         else if (collision.gameObject.tag == "Unhealthy")
         {
-            print("Unhealthy");
+            //losescene
         }
 
     }
