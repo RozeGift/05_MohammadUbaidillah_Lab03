@@ -20,4 +20,9 @@ public class ButtonScript : MonoBehaviour
     {
         SceneManager.LoadScene("GamePlay_Level 1");
     }
+
+    public void NextLevelButton()
+    {
+        SceneManager.LoadScene("GamePlay_Level 2");
+    }
 }
