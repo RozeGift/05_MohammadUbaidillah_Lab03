@@ -29,6 +29,13 @@ public class TimerScript : MonoBehaviour
             SceneManager.LoadScene("LoseScene");
         }
 
-        timerText.text = "Time: " + timeRemaining;
+        DisplayTime(timeRemaining);
+    }
+
+    void DisplayTime(float timeToDisplay)
+    {
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+        timerText.text = string.Format("Time: " + "{0:00}", seconds);
     }
 }
